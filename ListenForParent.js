@@ -2,7 +2,7 @@ videojs.registerPlugin('listenForParent', function() {
   var myPlayer = this;
   // This method called when postMessage sends data into the iframe
   function controlVideo(event){
-    if (evt.data === "playerDetail") {
+    if (event.data === "playerDetail") {
 	console.log('Brightcove: message received from sage.com:  ' + event.data, event);
 	
 	var message = "holla back youngin!";
