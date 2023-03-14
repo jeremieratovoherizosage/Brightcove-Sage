@@ -1,12 +1,16 @@
 videojs.registerPlugin('listenForParent', function() {
   var myPlayer = this;
   // This method called when postMessage sends data into the iframe
-  function controlVideo(evt){
+  function controlVideo(event){
     if (evt.data === "playerDetail") {
-	  console.error("myPlayer", myPlayer);
-	} else if(evt.data === "playVideo") {
+	console.log('Brightcove: message received from sage.com:  ' + event.data, event);
+	
+	var message = "holla back youngin!";
+	console.log('Brightcove:  sending message to sage.com:  ' + message + " Date: " + myPlayer);
+	event.source.postMessage(message, event.origin);
+	} else if(event.data === "playVideo") {
       myPlayer.play();
-    } else if (evt.data === 'pauseVideo') {
+    } else if (event.data === 'pauseVideo') {
       myPlayer.pause();
     }
   };
